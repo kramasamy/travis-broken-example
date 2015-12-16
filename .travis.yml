@@ -1,8 +1,6 @@
 language: php
 php:
   - 5.5
-  - 5.4
-  - hhvm
 
 before_install:
   - sudo apt-get install wget -y
@@ -11,9 +9,9 @@ before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -q
   - sudo apt-get install gcc-4.8 -y
-  - sudo add-apt-repository ppa:openjdk-r/ppa
+  - sudo add-apt-repository ppa:openjdk-r/ppa -y
   - sudo apt-get update -q
-  - sudo apt-get install openjdk-8-jdk
+  - sudo apt-get install openjdk-8-jdk -y
   - wget 'https://github.com/bazelbuild/bazel/releases/download/0.1.2/bazel-0.1.2-installer-darwin-x86_64.sh'
   - chmod +x bazel-0.1.2-installer-darwin-x86_64.sh
   - ./bazel-0.1.2-installer-darwin-x86_64.sh --user
