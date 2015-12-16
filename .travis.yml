@@ -3,4 +3,21 @@ php:
   - 5.5
   - 5.4
   - hhvm
-script: phpunit Test.php
+
+before_install:
+  - sudo apt-get install wget -y
+  - sudo apt-get install zip -y
+  - sudo apt-get install zlib1g-dev -y
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -q
+  - sudo apt-get install gcc-4.8 -y
+  - sudo add-apt-repository ppa:webupd8team/java
+  - sudo apt-get update -q
+  - sudo apt-get install oracle-java8-installer  -y
+  - wget 'https://github.com/bazelbuild/bazel/releases/download/0.1.2/bazel-0.1.2-installer-darwin-x86_64.sh'
+  - chmod +x bazel-0.1.2-installer-darwin-x86_64.sh
+  - ./bazel-0.1.2-installer-darwin-x86_64.sh --user
+  - cat ~/.bazelrc >> .bazelrc
+
+script: 
+  - bazel test --config=travis //src/...
