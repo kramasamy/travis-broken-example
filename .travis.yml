@@ -1,15 +1,20 @@
 language: java
 jdk:
   - oraclejdk8
-  - openjdk8
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.8
+      - g++-4.8
+      - wget
+      - pkg-config
+      - zip
+      - zlib1g-dev
 
 before_install:
-  - sudo apt-get install wget -y
-  - sudo apt-get install zip -y
-  - sudo apt-get install zlib1g-dev -y
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  - sudo apt-get update -q
-  - sudo apt-get install gcc-4.8 -y
   - wget 'https://github.com/bazelbuild/bazel/releases/download/0.1.2/bazel-0.1.2-installer-linux-x86_64.sh'
   - chmod +x bazel-0.1.2-installer-linux-x86_64.sh
   - ./bazel-0.1.2-installer-linux-x86_64.sh --user
