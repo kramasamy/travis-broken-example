@@ -9,22 +9,14 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - gcc-4.8
+      - g++-4.8
       - python2.7
-      - cmake
-      - automake
-      - make
       - wget
       - pkg-config
       - zip
       - zlib1g-dev
 
 before_install:
-  - which gcc
-  - gcc --version
-  - make --version
-  - cmake --version
-  - automake --version
-  - jdk_switcher use oraclejdk8
   - wget 'https://github.com/bazelbuild/bazel/releases/download/0.1.2/bazel-0.1.2-installer-linux-x86_64.sh'
   - chmod +x bazel-0.1.2-installer-linux-x86_64.sh
   - ./bazel-0.1.2-installer-linux-x86_64.sh --user
